@@ -3,6 +3,8 @@ import { useState } from 'react'
 export function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  // Replace this with your Formspree form endpoint
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzednrno'
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -13,13 +15,22 @@ export function Contact() {
     setFormStatus('submitting')
 
     try {
-      // For now, just simulate a successful submission
-      // In production, you would send this to your backend/API
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      console.log('Form submitted:', formData)
-      setFormStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setFormStatus('idle'), 3000)
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setFormStatus('idle'), 3000)
+      } else {
+        setFormStatus('error')
+        setTimeout(() => setFormStatus('idle'), 3000)
+      }
     } catch (error) {
       setFormStatus('error')
       setTimeout(() => setFormStatus('idle'), 3000)
@@ -44,6 +55,7 @@ export function Contact() {
               <input
                 type="text"
                 id="name"
+                name="name"
                 value={formData.name}
                 onChange={handleFormChange}
                 className="w-full bg-slate-900/50 border border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
@@ -58,6 +70,7 @@ export function Contact() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 value={formData.email}
                 onChange={handleFormChange}
                 className="w-full bg-slate-900/50 border border-purple-500/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
@@ -71,6 +84,7 @@ export function Contact() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 value={formData.message}
                 onChange={handleFormChange}
                 rows={4}

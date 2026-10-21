@@ -10,9 +10,6 @@ export function Footer() {
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors hover:scale-110 transform">
-              Twitter
-            </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors hover:scale-110 transform">
               LinkedIn
             </a>
             <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors hover:scale-110 transform">
