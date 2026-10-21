@@ -22,51 +22,48 @@ function App() {
     }
   }
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Animated background orbs */}
       <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-slate-900/95 backdrop-blur-md border-b border-purple-500/20 shadow-lg shadow-purple-500/10' : 'bg-transparent'
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-md border-b border-purple-500/20 shadow-lg shadow-purple-500/10' : 'bg-transparent'
+        }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-white tracking-tight">weebo</span>
+              <img src="/weebo-logo-alt.png" alt="Weebo Logo" className="logo w-40" />
             </div>
             <div className="hidden md:block">
               <div className="flex items-center space-x-8">
                 <button
                   onClick={() => scrollToSection('home')}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    activeSection === 'home' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={`text-sm font-medium transition-all duration-300 ${activeSection === 'home' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
+                    }`}
                 >
                   Home
                 </button>
                 <button
                   onClick={() => scrollToSection('about')}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    activeSection === 'about' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={`text-sm font-medium transition-all duration-300 ${activeSection === 'about' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
+                    }`}
                 >
                   About
                 </button>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    activeSection === 'services' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={`text-sm font-medium transition-all duration-300 ${activeSection === 'services' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
+                    }`}
                 >
                   Services
                 </button>
                 <button
                   onClick={() => scrollToSection('portfolio')}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    activeSection === 'portfolio' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={`text-sm font-medium transition-all duration-300 ${activeSection === 'portfolio' ? 'text-purple-400 scale-105' : 'text-gray-300 hover:text-white'
+                    }`}
                 >
                   Portfolio
                 </button>
@@ -98,33 +95,29 @@ function App() {
             <div className="px-4 py-4 space-y-3">
               <button
                 onClick={() => scrollToSection('home')}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  activeSection === 'home' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
-                }`}
+                className={`block w-full text-left text-sm font-medium transition-colors ${activeSection === 'home' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
+                  }`}
               >
                 Home
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  activeSection === 'about' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
-                }`}
+                className={`block w-full text-left text-sm font-medium transition-colors ${activeSection === 'about' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
+                  }`}
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  activeSection === 'services' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
-                }`}
+                className={`block w-full text-left text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
+                  }`}
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  activeSection === 'portfolio' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
-                }`}
+                className={`block w-full text-left text-sm font-medium transition-colors ${activeSection === 'portfolio' ? 'text-purple-400' : 'text-gray-300 hover:text-white'
+                  }`}
               >
                 Portfolio
               </button>
@@ -150,7 +143,7 @@ function App() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            We are web developers from Bolivia with over 15 years of experience, leveraging the power of AI to create innovative digital experiences.
+            We are software developers from Bolivia with over 15 years of experience, leveraging the power of AI to create innovative digital experiences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -340,7 +333,7 @@ function App() {
       <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-900 border-t border-purple-500/20 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-2xl font-bold text-white mb-4 md:mb-0">weebo</div>
+            <div className="text-2xl font-bold text-white mb-4 md:mb-0"><img src="/weebo-logo-alt.png" alt="Weebo Logo" className="logo w-40" /></div>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors hover:scale-110 transform">
                 Twitter
@@ -354,7 +347,7 @@ function App() {
             </div>
           </div>
           <div className="mt-8 text-center text-gray-400 text-sm">
-            © 2024 Weebo. All rights reserved. Built with ❤️ in Bolivia
+            © {currentYear} Weebo. All rights reserved. Built with ❤️ in Bolivia
           </div>
         </div>
       </footer>
